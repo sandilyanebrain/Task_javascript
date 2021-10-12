@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Student Registration</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .errorMsg {
+
+            color: red !important;
+        }
+    </style>
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <form id="form">
+                <p id="tablealert1" class="errorMsg"></p>
+                <h2 class='text-center'>Student Registration</h2>
+                <div class="card-deck">
+                    <!--Basic Information-->
+                    <div class="card ">
+                        <h3 class='text-center'>Basic </h3>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="stud_name"><strong>Name</strong></label>
+                                <input type="text" class="form-control" id="stud_name" placeholder="Enter Name"
+                                    name="stud_name">
+                                <span id="stud_name_ErrorId" class="errorMsg"></span><br>
+
+                                <!--Register No-->
+                                <label for="register_no"><strong>Register No</strong></label>
+                                <input type="text" class="form-control" id="register_no" placeholder="Enter Register No"
+                                    name="register_no">
+                                <span id="register_no_ErrorId" class="errorMsg"></span><br>
+
+
+                                <label for="gender"><strong>Gender</strong></label>
+                                <div>
+                                    <label for="male"><input type="radio" name="gender" id="radio1"
+                                            value="male">Male</label>
+                                    <label for="female"><input type="radio" name="gender" id="radio2"
+                                            value="female">Female</label>
+
+
+                                </div>
+                                <span id="gender_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="email"><strong>Email</strong></label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email"
+                                    name="email">
+                                <span id="email_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="phone_no"><strong>Phone</strong></label>
+                                <input type="number" class="form-control" id="phone_no" placeholder="Enter Phone No"
+                                    name="phone_no">
+                                <span id="phoneNo_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="dob"><strong>DOB</strong></label>
+                                <input type="date" class="form-control" id="dob" name="dob">
+                                <span id="dob_ErrorId" class="errorMsg"></span><br>
+
+
+                                <label for="nationality"><strong>Nationality</strong></label>
+                                <select class="form-control" id="nationality">
+                                    <option value="">Select</option>
+                                    <option value="canada">Canada</option>
+                                    <option value="france">France</option>
+                                    <option value="india">India</option>
+                                    <option value="singapore">Singapore</option>
+                                </select>
+                                <span id="nationalilty_ErrorId" class="errorMsg"></span><br>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Academic Information-->
+
+                    <div class="card ">
+                        <h3 class='text-center'>Academic</h3>
+                        <div class="card-body">
+                            <div class="form-group">
+
+
+                                <label for="doj"><strong>Joining Date</strong></label>
+                                <input type="date" class="form-control" id="doj" name="doj">
+                                <span id="doj_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="acd_type"><strong>Type</strong></label>
+                                <select class="form-control" id="acd_type">
+                                    <option value="">Choose</option>
+                                    <option value="regular">Regular</option>
+                                    <option value="lateral">Lateral</option>
+                                    <option value="di_edu">Distance Education</option>
+
+                                </select>
+                                <span id="acd_type_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="acd_degree"><strong>Degree</strong></label>
+                                <select class="form-control" id="acd_degree">
+                                    <option value="">Select</option>
+                                    <option value="B-Tech">B.Teh</option>
+                                    <option value="M-Tech">M.Tech</option>
+                                </select>
+                                <span id="acd_degree_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="acd_branch"><strong>Branch</strong></label>
+                                <select class="form-control" id="acd_branch">
+                                    <option value="">Choose</option>
+                                    <option value="Civil">Civil</option>
+                                    <option value="CSE">Computer Science</option>
+                                    <option value="ECE">Ece</option>
+                                    <option value="EIE">E&I</option>
+                                    <option value="MECH">Mechanical</option>
+                                    <option value="MECHTRONICS">Mechatronics</option>
+                                </select>
+                                <span id="acd_branch_ErrorId" class="errorMsg"></span><br>
+
+
+
+                                <label for="acd_degree"><strong>Year</strong></label>
+                                <select class="form-control" id="acd_year">
+                                    <option value="">Choose</option>
+                                    <option value="I-Year">I-Year</option>
+                                    <option value="II-Year">II-Year</option>
+                                    <option value="III-Year">III-Year</option>
+                                    <option value="IV-Year">IV-Year</option>
+                                </select>
+                                <span id="acd_year_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="acd_semester"><strong>Semester</strong></label>
+                                <select class="form-control" id="acd_semester">
+                                    <option value="">Choose</option>
+                                    <option value="firstSem">I-Sem</option>
+                                    <option value="secondSem">II-Sem</option>
+                                    <option value="thirdSem">III-Sem</option>
+                                    <option value="fourthSem">IV-Sem</option>
+                                    <option value="fifthSem">V-Sem</option>
+                                    <option value="sixthSem">VI-Sem</option>
+                                    <option value="seventhSem">VII-Sem</option>
+                                    <option value="eigthSem">VIII-Sem</option>
+                                </select>
+                                <span id="acd_sem_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="acd_batch"><strong>Batch</strong></label>
+                                <select class="form-control" id="acd_batch">
+                                    <option value="">Choose</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                </select>
+                                <span id="acd_batch_ErrorId" class="errorMsg"></span><br>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--Parent Information-->
+                    <div class="card">
+                        <h3 class='text-center'>Parent </h3>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="father_name"><strong>Father Name</strong></label>
+                                <input type="text" class="form-control" id="father_name" placeholder="Enter Father Name"
+                                    name="father_name">
+                                <span id="father_name_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="mother_name"><strong>Mother Name</strong></label>
+                                <input type="text" class="form-control" id="mother_name" placeholder="Enter Mother Name"
+                                    name="mother_name">
+                                <span id="mother_name_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="contact_no"><strong>Contact No</strong></label>
+                                <input type="number" class="form-control" id="contact_no" placeholder="Enter Contact No"
+                                    name="contact_no">
+                                <span id="contact_no_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="father_occup"><strong>Father Occupation</strong></label>
+                                <input type="text" class="form-control" id="father_occup"
+                                    placeholder="Enter Father Occupation" name="father_occup">
+                                <span id="father_occup_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="mother_occup"><strong>Mother Occupation</strong></label>
+                                <input type="text" class="form-control" id="mother_occup"
+                                    placeholder="Enter Mother Occupation" name="mother_occup">
+                                <span id="mother_occup_ErrorId" class="errorMsg"></span><br>
+
+                                <label for="yearly_income"><strong>Yearly Income</strong></label>
+                                <input type="number" class="form-control" id="yearly_income"
+                                    placeholder="Enter yearly income" name="yearly_income">
+                                <span id="yearly_income_ErrorId" class="errorMsg"></span><br>
+
+                                <label><strong>Feedback</strong></label>
+                                <textarea class="form-control" rows="3" id="feedback" placeholder="feedback"></textarea>
+                                <span id="feedback_ErrorId" class="errorMsg"></span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Other-->
+                    <div class="card">
+                        <h3 class='text-center'>Other</h3>
+                        <div class="card-body">
+                            <div class="form-group">
+
+                                <!---Age-->
+                                <label for="age"><strong>Age</strong></label>
+                                <input type="number" class="form-control" id="age" placeholder="Enter Age" name="age">
+                                <span id="age_ErrorId" class="errorMsg"></span><br>
+
+                                <!--Accomodation (Search)-->
+
+                                <label for="accomadation"><strong>Accomadation</strong></label>
+                                <input list="accomadation" name="accomadation" class="form-control"
+                                    id="stud_accomadation" autocomplete="off">
+                                <datalist id="accomadation" class="form-input">
+                                    <option value="Hostel">
+                                    <option value="dayscholar">
+                                    <option value="private">
+                                    <option value="nri">
+                                    <option value="other">
+                                </datalist>
+                                <span id="stud_accomadation_ErrorId" class="errorMsg"></span><br>
+
+
+                                <!--Event Participation (Multi select)-->
+                                <label for="event_particip"><strong>Event Participation</strong></label>
+
+                                <select multiple class="form-control" id="event_particip" name="event_particip">
+                                    <option value="sports">Sports</option>
+                                    <option value="culturals">Culturals</option>
+                                    <option value="tech_event">Technical Event</option>
+                                    <option value="crowd_control">Crowd Control</option>
+                                    <option value="event_manage">Event Manager</option>
+                                </select>
+                                <span id="event_particip_ErrorId" class="errorMsg"></span><br>
+
+                                <!--Blood Group-->
+                                <label for="blood_group"><strong>Blood Group</strong></label>
+
+                                <select id="blood_group" name="blood_group" class="form-control">
+                                    <option value="" selected>Select</option>
+                                    <optgroup label="A">
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                    </optgroup>
+                                    <optgroup label="B">
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                    </optgroup>
+                                    <optgroup label="O">
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </optgroup>
+                                    <optgroup label="AB">
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                    </optgroup>
+                                    <optgroup label="Rare">
+                                        <option value="A1B">A1B</option>
+                                        <option value="A2B">A2B</option>
+                                    </optgroup>
+                                </select>
+                                <span id="bloodgroup_ErrorId" class="errorMsg"></span><br>
+
+
+                                <!--Extracurricular Activities (Multi select)-->
+                                <label for="extra_active"><strong>Extracurricular Activities</strong></label>
+                                <div class="form-check">
+                                    <label class="form-check-label" for="checkbox1">
+                                        <input type="checkbox" name="checkbox" class="check" id="sports"
+                                            value="sports" />
+                                        Sports </label><br>
+                                    <label class="form-check-label" for="checkbox2">
+                                        <input type="checkbox" name="checkbox" class="check" id="movies"
+                                            value="movies" />
+                                        Movies </label><br>
+                                    <label class="form-check-label" for="checkbox3">
+                                        <input type="checkbox" name="checkbox" class="check" id="gaming"
+                                            value="gaming" />
+                                        Gaming </label><br>
+                                    <label class="form-check-label" for="checkbox4">
+                                        <input type="checkbox" name="checkbox" class="check" id="reading"
+                                            value="reading" />
+                                        Reading </label><br />
+                                    <label class="form-check-label" for="checkbox5">
+                                        <input type="checkbox" name="checkbox" class="check" id="web_surfing"
+                                            value=" web_surfing" />
+                                        Web Surfing </label>
+
+
+                                </div>
+                                <span id="extra_active_ErrorId" class="errorMsg"></span><br>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class='text-center'>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='add.html';">View</button>
+            <button type="button" class="btn btn-success" onclick="validateInfo()">Submit</button>
+
+        </div>
+
+        </form>
+    </div>
+    </div>
+
+</body>
+<script src="script.js"></script>
+
+</html>

@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <title>
+
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .errorMsg {
+
+            color: red !important;
+        }
+
+        .formMsg {
+            color: red !important;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Registration Form</h2>
+        <div id="error_id" class="formMsg"></div>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="user_name" placeholder="Enter Name" name="user_name">
+                <span id="user_name_ErrorId" class="errorMsg"></span><br>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="user_email" placeholder="Enter email" name="user_email">
+                <span id="user_email_ErrorId" class="errorMsg"></span><br>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="user_pwd" placeholder="Enter password" name="user_pwd">
+                <span id="user_pwd_ErrorId" class="errorMsg"></span><br>
+            </div>
+
+            <button type="button" onclick="saveData()" id="save_btn" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+
+</body>
+<script>
+    function saveData() {
+
+        var formError = false;
+
+        var user_name = document.getElementById("user_name").value;
+
+        if (user_name == null || user_name == "") {
+            document.getElementById("user_name_ErrorId").innerHTML = "Required";
+            formError = true;
+        } else {
+            document.getElementById("user_name_ErrorId").innerHTML = "";
+            formError = false;
+        }
+
+        var user_email = document.getElementById("user_email").value;
+
+        if (user_email == null || user_email == "") {
+            document.getElementById("user_email_ErrorId").innerHTML = "Required";
+            formError = true;
+        } else {
+            document.getElementById("user_email_ErrorId").innerHTML = "";
+            formError = false;
+        }
+
+        var user_pwd = document.getElementById("user_pwd").value;
+
+        if (user_pwd == null || user_pwd == "") {
+            document.getElementById("user_pwd_ErrorId").innerHTML = "Required";
+            formError = true;
+        } else {
+            document.getElementById("user_pwd_ErrorId").innerHTML = "";
+            formError = false;
+        }
+
+        if (formError) {
+            return false;
+        } else {
+
+        }
+
+
+
+
+        let user_records = new Array();
+        user_records = JSON.parse(localStorage.getItem("users")) ? JSON.parse(localStorage.getItem("users")) : []
+        if (user_records.some((v) => { return v.email == user_email })) {
+
+            document.getElementById("error_id").innerHTML =
+                "Email Id id already in use! please use the new one!";
+            // alert("Email Id id already in use! please use the new one!");
+        }
+        else {
+            user_records.push({
+                "name": user_name,
+                "email": user_email,
+                "pwd": user_pwd
+            })
+            localStorage.setItem("users", JSON.stringify(user_records));
+            window.location.href = "login.html";
+        }
+
+    }
+</script>
+
+</html>

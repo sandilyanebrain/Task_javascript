@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./script.js"></script>
+    <style>
+        .errorMsg {
+
+            color: red !important;
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- <div class="container">
+        <div class="shadow p-3 mb-5 bg-white rounded"> -->
+
+    <div class="container">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <button type="button" class="btn btn-primary btn-sm mt-0 mr-1" style="float: right;"><a
+                    href="./student.html" style="color: blanchedalmond;">Add </a></button>
+            <p id="tablealert" class="errorMsg"></p>
+            <div class="table-responsive-sm">
+                <table class=" table table-bordered table" id="mytable">
+                    <thead>
+                        <tr>
+                            <th>SNo</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Stream</th>
+                            <th>Batch</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableid"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    window.onload = displayTableData();
+
+    var stud;
+    var localData = [];
+    var editIndex;
+
+    function displayTableData() {
+
+        var msg = localStorage.getItem('form_msg');
+        if (msg == "Updated") {
+            document.getElementById("tablealert").innerHTML =
+                "User Information Updated Successfully";
+        } else if (msg == "Saved") {
+            document.getElementById("tablealert").innerHTML =
+                "User Information Saved Successfully";
+
+        } else if (msg == "Deleted") {
+            document.getElementById("tablealert").innerHTML =
+                "User Information Deleted Successfully";
+        }
+        localStorage.removeItem('form_msg');
+
+
+        var storedData = localStorage.getItem('student');                                      // "student" is the name of array in local storage
+
+        if (null == storedData) {
+            return;
+        }
+
+
+        var field = JSON.parse(storedData);
+        var tableRowData = ''
+        for (var i = 0; i < field.length; i++) {
+            var studobj = field[i];
+            console.log(studobj);
+
+            tableRowData = tableRowData + "<tr>";
+            tableRowData = tableRowData + "<td>" + (i + 1) + "</td>";
+            tableRowData = tableRowData + "<td>" + studobj.basic.name + "</td>";                            //main obj . sub obj . key
+            tableRowData = tableRowData + "<td>" + studobj.basic.gender + "</td>";
+            tableRowData = tableRowData + "<td>" + studobj.academic.acddegree + "-" + studobj.academic.acdbranch + "-" + studobj.academic.acdyear + "-" + studobj.academic.acdsemester + "</td>";
+            tableRowData = tableRowData + "<td>" + studobj.academic.acdbatch + "</td>";
+            tableRowData = tableRowData + '<td><button class="btn btn-success" onclick="editstudObj(' + i + ')">Edit</button><button class="btn btn-danger ml-3"onclick="deleteobj(' + i + ')">Delete</button></td>';
+            tableRowData = tableRowData + "</tr>";
+        }
+        document.getElementById("tableid").innerHTML = tableRowData;
+
+
+    }
+
+    function editstudObj(id) {
+        var stud = JSON.parse(localStorage.getItem("student"));
+
+        window.location.href = "student.html?id=" + id;
+
+    }
+
+    function deleteobj(index) {
+        var del = confirm("Are you sure you want to delete this record?");
+        if (del == true) {
+            var studobj = JSON.parse(localStorage.getItem("student"));
+            studobj.splice(index, 1);
+            localStorage.setItem("student", JSON.stringify(studobj));
+            localStorage.setItem("form_msg", "Deleted");
+
+        }
+        displayTableData();
+    }
+
+
+
+
+</script>
+
+</html>
